@@ -1,0 +1,6 @@
+History
+
+- C wurde 1972 von Dennis Ritchie und Ken Thompson in Katakomben von Bell Telephone Laboratories erfunden.
+- Dennis Ritchie und Brian Kernighan sind die Autoren von der (veralteten C Bibel) The C Programming Language.
+- 1989 wurde C vom American National Standards Institute (ANSI) als ANSI X3.159-1989 ratifiziert.
+- Dieser legendäre Standard wird häufig einfach ANSI C oder C89 genannt.
