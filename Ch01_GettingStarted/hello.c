@@ -3,6 +3,6 @@
 
 int main(void)
 {
-    printf("Hello, World!");
+    puts("Hello, world!");
     return EXIT_SUCCESS;
 }

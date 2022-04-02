@@ -1,0 +1,51 @@
+Hinweis: ich zeige für Windows nur die Befehle für das Kompilieren und Ausführen der .exe. Alle weiteren
+Befehle werden an einer Ubuntu Bash des Windows Linux Subsystems (WLS) innerhalb von einem auf Windows
+installierten VS Code ausgeführt. Ubuntu hat das Windows Dateisystem gemountet und kann daher auf die 
+Projektverzeichnisse in Windows zugreifen. (Warnung: die Verzeichnisse von Windows mit dem WSL Dateisystem 
+zu verknüpfen ist laut Microsoft nicht empfehlenswert!)
+
+
+Erstes Hello world Programm
+
+- Die Datei Erweiterung .c zeigt an, dass die Datei C Sprachen Source Code enthält.
+- Als nächstes müssen wir das Programm kompilieren und laufen lassen was zwei Schritte enthält.
+- Du kannst verschiedene Compiler nutzen und der Befehl zum kompilieren variiert je nach OS.
+- Auf Linux und anderen Unix-like Betriebssystemen kannst du den System Compiler aufrufen durch 
+  den cc Befehl.
+- Auf der Kommandozeile gib cc ein gefolgt von dem Dateinamen der Datei, die kompiliert werden soll.
+
+(L)% cc hello.c
+
+- Compiler auf anderen OS werden anders aufgerufen. Lesen der entsprechenden Dokumentation ist wichtig
+  um den Quellcode zu kompilieren.
+
+Windows in der CMD z.B.:
+
+(W)% gcc hello.c
+
+- Wurde das Programm richtig geschrieben, dann befindet sich nun eine Datei a.out im selben Verzeichnis
+  wie dein Quellcode.
+
+  (L)% ls sollte nun die Dateien a.out und hello.c anzeigen.
+  (w)% dir sollte nun die Dateien a.out und hello.c anzeigen.
+
+Die a.out bzw. a.exe Datei ist das ausführbare Programm.
+
+Starte die ausführbare Datei nun mit 
+
+(L)% ./a.out
+(W)% a
+
+Es sollte nun Hello, world am Terminal ausgegeben werden.
+
+Von nun an werden nur noch die Linux Befehle verwendet! MS Benutzer sollten entsprechende Befehle in der Dokumentation nachschlagen.
+
+Der cc Befehl hat verschieden Flags und Compiler. Bespielsweise ermöglicht die -o Flag deiner ausführbaren Datei einen ausdrucksstarken 
+Namen zu geben.
+
+% cc -o hello hello.c
+% ./hello
+Hello, world!
+
+
+
