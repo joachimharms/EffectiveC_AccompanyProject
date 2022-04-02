@@ -1,13 +1,45 @@
+Popularität einer legendären Programmiersprache
+- Nach 50 Jahren C Geschichte ist C immer noch eine der beliebtesten Programmiersprachen der Welt.
+- Nach TIOBE Index war C durchgängig entweder die beliebteste oder zweit beliebteste Programmiersprache seit 2001 (Stand 2019). 
+- C wurde als Programmiersprache des Jahres 2019 vom TIOBE Index ausgezeichnet.
+- Die Popularität ist also ungebrochen und dies ist u.a. auf den Spirit of C zurückzuführen.                                                                                                  1.April 2022
+
+Der Spirit von C
+- Vertraue dem Programmierer! C geht davon aus, dass du weißt was du tust und erlaubt dir alles. Gerade das ist als Anfänger
+  aber nicht immer gut.
+- Halte den Programmierer nicht davon ab die notwendigen Dinge zu tun! Weil C eine System-Programmiersprache ist muss sie es dem 
+  Programmierer ermöglichen Aufgaben auf niedriger Hardware Ebene auszuführen.
+- Halte die Sprache klein und einfach! C ist entworfen um sehr nahe auf der Hardwareebene aufzusetzen. C Programme sollten daher nur 
+  einen kleinen Footprint haben. Das heißt nur wenig Speicher soll von einem C Programm besetzt werden.
+- Stellt nur einen Weg zur Verfügung um eine Aufgabe auszuführen. C versucht die
+
 History
 
-- C wurde 1972 von Dennis Ritchie und Ken Thompson in Katakomben von Bell Telephone Laboratories erfunden.
-- Dennis Ritchie und Brian Kernighan sind die Autoren von der (veralteten C Bibel) The C Programming Language.
+- C wurde 1972 von Dennis Ritchie und Ken Thompson in den Katakomben von Bell Telephone Laboratories erfunden.
+- Dennis Ritchie ist, gemeinsam mit Brian Kernighan, Autor von dem (etwas veralteten C Klassiker) "The C Programming Language".
 - 1989 wurde C vom American National Standards Institute (ANSI) als ANSI X3.159-1989 ratifiziert.
 - Dieser legendäre Standard wird häufig einfach ANSI C oder C89 genannt.
 - Ungeändert wurde dieser Standard 1990 auch von International Organization for Standardization (ISO) angenommen
   und als erste Ausgabe des C Standards als C90 veröffentlicht.
 - Eine zweite Ausgabe des C Standards wurde 1999 von der ISO veröffentlicht und ist bekannt unter dem Namen C99. 
 - Die dritte Ausgabe des ISO C Standards erschien 2011.
-- Der aktuellste C Standard erschien 2018 als C17.
-- Eine aktuelle Umfrage von Jetbrains brachte hervor, dass 52% der C Programmierer C99 verwenden. 36 Prozent
-  verwenden C11 und 23 Prozent verwenden ein eingebettetes C.
+- Der aktuellste C Standard erschien 2018 als C17 und ist die aktuelle Autorität des Sprachverhaltens. 
+- Eine aktuelle Umfrage (2019) von Jetbrains brachte hervor, dass 52% der C Programmierer C99 verwenden. 36 Prozent
+  verwenden C11 und 23 Prozent verwenden ein eingebettetes C. 
+
+
+Compilers
+
+- Je nach Compiler (z.B. GCC) kann unterschiedliches Verhalten ausgelöst werden und andere Sicherheitslücken können auftreten.
+- Die GNU Compiler Collection (GCC) verwendet die -std= Flag um den C Standard zu definieren. Mögliche Werte für die Flag sind
+  c89, c90, c99, c11, c17, c18 und c2sx. Die Standardeinstellung wird bestimmt vom verwendeten Compiler.
+- Wird keine C Sprach Option gegeben dann ist der Standardwert für "GCC 10": -std=gnu17. Dieser enthält zusätzliche Sprachfeatures.
+- Eine gute Wahl in 2019 mit GCC 8 und später ist std=c17.
+- Du kannst die C Sprache und das unterschiedliche Verhalten, ausgelöst durch den Einsatz verschiedener Compiler, verstehen durch das 
+  Schreiben einfacher kleiner Test Programme.
+- Das Verhalten deines Quellcodes kann sich verändern je nach Implementation auf den verschiedenen Plattformen oder 
+  sogar dieselbe Implementation durch den Einsatz unterschiedlicher Compiler Flags. Code kann sich sogar unterschiedlich verhalten
+  durch den Einsatz unterschiedlicher Versionen des selben Compilers. 
+- Der C Standard ist das einzige Dokument, dass spezifiziertes Verhalten über alle Plattformen garantiert!
+
+Noch mehr Factos :)
