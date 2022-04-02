@@ -4,3 +4,10 @@ History
 - Dennis Ritchie und Brian Kernighan sind die Autoren von der (veralteten C Bibel) The C Programming Language.
 - 1989 wurde C vom American National Standards Institute (ANSI) als ANSI X3.159-1989 ratifiziert.
 - Dieser legendäre Standard wird häufig einfach ANSI C oder C89 genannt.
+- Ungeändert wurde dieser Standard 1990 auch von International Organization for Standardization (ISO) angenommen
+  und als erste Ausgabe des C Standards als C90 veröffentlicht.
+- Eine zweite Ausgabe des C Standards wurde 1999 von der ISO veröffentlicht und ist bekannt unter dem Namen C99. 
+- Die dritte Ausgabe des ISO C Standards erschien 2011.
+- Der aktuellste C Standard erschien 2018 als C17.
+- Eine aktuelle Umfrage von Jetbrains brachte hervor, dass 52% der C Programmierer C99 verwenden. 36 Prozent
+  verwenden C11 und 23 Prozent verwenden ein eingebettetes C.
