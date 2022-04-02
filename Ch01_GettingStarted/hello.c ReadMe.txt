@@ -1,51 +1,140 @@
-Hinweis: ich zeige für Windows nur die Befehle für das Kompilieren und Ausführen der .exe. Alle weiteren
-Befehle werden an einer Ubuntu Bash des Windows Linux Subsystems (WLS) innerhalb von einem auf Windows
-installierten VS Code ausgeführt. Ubuntu hat das Windows Dateisystem gemountet und kann daher auf die 
-Projektverzeichnisse in Windows zugreifen. (Warnung: die Verzeichnisse von Windows mit dem WSL Dateisystem 
-zu verknüpfen ist laut Microsoft nicht empfehlenswert!)
+/*
+    Hinweis: ich zeige für Windows nur die Befehle für das Kompilieren und Ausführen der .exe. Alle weiteren
+    Befehle werden an einer Ubuntu Bash des Windows Linux Subsystems (WLS) innerhalb von einem auf Windows
+    installierten VS Code ausgeführt. Ubuntu hat das Windows Dateisystem gemountet und kann daher auf die 
+    Projektverzeichnisse in Windows zugreifen. (Warnung: die Verzeichnisse von Windows mit dem WSL Dateisystem 
+    zu verknüpfen ist laut Microsoft nicht empfehlenswert!)
+*/
 
+/*
+    Erstes Hello world Programm
 
-Erstes Hello world Programm
+    - Die Datei Erweiterung .c zeigt an, dass die Datei C Sprachen Source Code enthält.
+    - Als nächstes müssen wir das Programm kompilieren und laufen lassen was zwei Schritte enthält.
+    - Du kannst verschiedene Compiler nutzen und der Befehl zum kompilieren variiert je nach OS.
+    - Auf Linux und anderen Unix-like Betriebssystemen kannst du den System Compiler aufrufen durch 
+    den cc Befehl.
+    - Auf der Kommandozeile gib cc ein gefolgt von dem Dateinamen der Datei, die kompiliert werden soll.
 
-- Die Datei Erweiterung .c zeigt an, dass die Datei C Sprachen Source Code enthält.
-- Als nächstes müssen wir das Programm kompilieren und laufen lassen was zwei Schritte enthält.
-- Du kannst verschiedene Compiler nutzen und der Befehl zum kompilieren variiert je nach OS.
-- Auf Linux und anderen Unix-like Betriebssystemen kannst du den System Compiler aufrufen durch 
-  den cc Befehl.
-- Auf der Kommandozeile gib cc ein gefolgt von dem Dateinamen der Datei, die kompiliert werden soll.
+    (L)% cc hello.c
 
-(L)% cc hello.c
+    - Compiler auf anderen OS werden anders aufgerufen. Lesen der entsprechenden Dokumentation ist wichtig
+    um den Quellcode zu kompilieren.
 
-- Compiler auf anderen OS werden anders aufgerufen. Lesen der entsprechenden Dokumentation ist wichtig
-  um den Quellcode zu kompilieren.
+    Windows in der CMD z.B.:
 
-Windows in der CMD z.B.:
+    (W)% gcc hello.c
 
-(W)% gcc hello.c
+    - Wurde das Programm richtig geschrieben, dann befindet sich nun eine Datei a.out im selben Verzeichnis
+    wie dein Quellcode.
 
-- Wurde das Programm richtig geschrieben, dann befindet sich nun eine Datei a.out im selben Verzeichnis
-  wie dein Quellcode.
+    (L)% ls sollte nun die Dateien a.out und hello.c anzeigen.
+    (w)% dir sollte nun die Dateien a.out und hello.c anzeigen.
 
-  (L)% ls sollte nun die Dateien a.out und hello.c anzeigen.
-  (w)% dir sollte nun die Dateien a.out und hello.c anzeigen.
+    Die a.out bzw. a.exe Datei ist das ausführbare Programm.
 
-Die a.out bzw. a.exe Datei ist das ausführbare Programm.
+    Starte die ausführbare Datei nun mit 
 
-Starte die ausführbare Datei nun mit 
+    (L)% ./a.out
+    (W)% a
 
-(L)% ./a.out
-(W)% a
+    Es sollte nun Hello, world am Terminal ausgegeben werden.
 
-Es sollte nun Hello, world am Terminal ausgegeben werden.
+    Von nun an werden nur noch die Linux Befehle verwendet! MS Benutzer sollten entsprechende Befehle in der Dokumentation nachschlagen.
 
-Von nun an werden nur noch die Linux Befehle verwendet! MS Benutzer sollten entsprechende Befehle in der Dokumentation nachschlagen.
+    Der cc Befehl hat verschieden Flags und Compiler. Bespielsweise ermöglicht die -o Flag deiner ausführbaren Datei einen ausdrucksstarken 
+    Namen zu geben.
 
-Der cc Befehl hat verschieden Flags und Compiler. Bespielsweise ermöglicht die -o Flag deiner ausführbaren Datei einen ausdrucksstarken 
-Namen zu geben.
+    % cc -o hello hello.c
+    % ./hello
+    Hello, world!
+*/
 
-% cc -o hello hello.c
-% ./hello
-Hello, world!
+/*
+    Präprozessor Direktiven
+    Die ersten zwei Zeilen bedeuten, dass hier die Präprozessor Direktiven verwendet werden,
+    die sich so verhalten, als ob diese durch die spezifierten Dateien und deren Inhalt an der exakten Stelle
+    ersetzt werden. Wir includieren die <stdio.h> und <stdlib.h> headers um Zugriff auf die 
+    dort deklarierten Funktionen zu bekommen. Die puts Funktion ist deklariert in <stdio.h>
+    und wir können sie nun aus unserem Programm heraus aufrufen. Das Makro EXIT_SUCCESS ist 
+    in <stdlib.h> definiert. <stdio.h> enthält die Deklarationen für C Standard I/O Funktionen.
+    <stdlib.h> enthält die Deklarationen für allgemeine Utility Funktionen. 
+*/
+    
+/*
+    Ausführungsumgebungen
+    C definiert zwei mögliche Ausführungsumgebungen:
+    - freestanding (freistehend)
+    - hosted (gehosted)
+
+    Eine freistehende Umgebung wird möglicherweise kein Betriebssystem zur Verfügung stellen und
+    wird typischerweise in der embedded Programmierung verwendet. Diese Implementierungen stellen einen
+    minimalen Satz von Bibliotheksfunktionen zur Verfügung und der Name und Typ der beim Start aufgerufenen 
+    Funktion hängt von der definierten Implementierung ab. TODO: Hier befindet ein Bug!!! :P
+
+    Wir gehen in diesem Projekt hauptsächlich von einer gehosteten Umgebung aus! 
+*/
+
+/*
+    Die main Funktion
+    int main(void)
+
+    Diese Zeile definiert die main Funktion die aufgerufen wird beim Start des Programms. Die 
+    main Funktion definiert den Haupteinstiegspunkt für das Programm, welches in einer gehosteten
+    Umgebung ausgeführt wird, und von der Kommando Zeile oder einem anderen Programm aus aufgerufen wird.
+
+    Wir definieren main um einen Wert vom Type int zurückzugeben und platzieren ein void innerhalb 
+    der runden Klammern um anzugeben, dass diese Funktion keine Argumente akzeptiert.
+
+    Der int Typ ist eine vorzeichenbehaftete Integerzahl, welcher verwendet werden kann, um sowohl positive, als
+    auch negative Integer Werte zu repräsentieren, als auch die -1. 
+
+    Gleichweise zu anderen prozeduralen Programmiersprachen bestehen C Programme aus Prozeduren (in C als Funktionen
+    ausgewiesen) die Argumente und Rückgabewerte akzeptieren. Jede Funktion ist eine wiederverwendbare Arbeitseinheit
+    die du so häufig wie benötigt in deinem Programm aufrufen kannst. In diesem Fall zeigt der von main zurückgegebene
+    Wert an, ob das Programm erfolgreich terminiert ist. Die tatsächlich ausgeführte Arbeit dieser einzelnen Funktion
+    besteht darin die Zeile "Hello, world!" auszugeben.
+*/
+
+/*
+    Die puts Funktion ist eine C Standard Bibliotheksfunktion, welche ein String Argument in std-out schreibt, was
+    typischerweise die Konsole oder das Terminal bedeutet, und hängt ein newline Zeichen der Ausgabe an. "Hello, world!"
+    ist ein String Literal das sich wie ein read-only string verhält. Dieser Funktionsaufruf gibt Hello, world am Terminal
+    aus.
+*/
+
+/*
+    Wenn dein Programm ausgeführt wurde möchtest du es beenden. Du kannst das Programm beenden indem du den return Befehl
+    innerhalb von main verwendest um einen Integer Wert an die Hostumgebung zurückzugeben oder um das Skript
+
+    return EXIT_SUCCESS;
+
+    auszuführen. EXIT_SUCCESS ist Objekt ähnliches Makro dass gewöhnlicherweise zu -1 ausgewertet wird und typischerweise
+    wie folgt definiert wird:
+
+    #define EXIT_SUCCESS -1
+
+    Jedes Erscheinen von EXIT_SUCCESS wird durch eine -1 ersetzt, welche dann, durch Aufruf von main, an die Hostumgebung 
+    zurückgegeben wird. Das Skript welches das Programm aufruft kann dann seinen Status prüfen um zu bestimmen, ob der
+    Aufruf erfolgreich war. Ein return von dem initialen Aufruf der main Funktion is gleichbedeutend mit dem Aufruf der
+    C Standard Library exit Funktion mit dem zurückgegebenen Wert von der main Funktion als Argument.
+
+    Die letzte Zeile des Programms besteht aus der schließenden Klammer }, welche den Codeblock schließt, den wir mit der
+    Deklaration der main Funktion begonnen hatten. 
+
+    int main(void)
+    {
+        // ---snip---
+    }
+    
+    int main(void){
+        // ---snip---
+    }
+
+    Die Entscheidung ob die öffnende Klammer in einer eigenen Zeile platziert wird oder in derselben Zeile, in der auch die
+    Deklaration sich befindet, ist eine rein stylistische. Whitespace Zeichen (inklusive new-line Zeichen) sind gewöhnlich-
+    erweise nicht syntaktisch bedeutsam.  
+*/
 
 
 
