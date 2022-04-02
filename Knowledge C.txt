@@ -6,7 +6,7 @@ Popularität einer legendären Programmiersprache
 - Die Popularität ist also ungebrochen und dies ist u.a. auf den Spirit of C zurückzuführen.                                                                                                  1.April 2022
 
 
-Der Spirit von C
+Spirit of C
 
 - Vertraue dem Programmierer! C geht davon aus, dass du weißt was du tust und erlaubt dir alles. Gerade das ist als Anfänger
   aber nicht immer gut.
